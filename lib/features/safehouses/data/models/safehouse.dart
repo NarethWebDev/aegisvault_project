@@ -34,4 +34,18 @@ class Safehouse {
       createdAt: DateTime.parse(json['created_at'] as String),
     );
   }
+
+  /// Convierte el modelo a JSON para guardarlo en caché local encriptado.
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'codename': codename,
+      'sector': sector,
+      'latitude': latitude,
+      'longitude': longitude,
+      'capacity': capacity,
+      'is_compromised': isCompromised,
+      'created_at': createdAt.toIso8601String(),
+    };
+  }
 }
