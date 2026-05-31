@@ -3,7 +3,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'features/safehouses/data/repositories/safehouse_repository.dart';
 
-/// Credenciales del proyecto Supabase - Aegis Vault
 const String _supabaseUrl = 'https://gbgvtwkhmagupynpvdkb.supabase.co';
 const String _supabaseAnonKey =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdiZ3Z0d2tobWFndXB5bnB2ZGtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDA2MzcsImV4cCI6MjA5NTgxNjYzN30.c4fdDDszLLKkgI3-4WHnp5aVs2rxuX94C0GQdqWrrso';
@@ -11,13 +10,11 @@ const String _supabaseAnonKey =
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Inicializar Supabase con las credenciales del proyecto
   await Supabase.initialize(
     url: _supabaseUrl,
     anonKey: _supabaseAnonKey,
   );
 
-  // Instanciar el repositorio con el cliente de Supabase y el storage encriptado
   final safehouseRepository = SafehouseRepository(
     supabase: Supabase.instance.client,
     secureStorage: const FlutterSecureStorage(),
@@ -26,7 +23,6 @@ Future<void> main() async {
   runApp(AegisVaultApp(repository: safehouseRepository));
 }
 
-/// Punto de entrada de la aplicación Aegis Vault.
 class AegisVaultApp extends StatelessWidget {
   final SafehouseRepository repository;
 
@@ -44,7 +40,6 @@ class AegisVaultApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      // Roderick conecta aquí su SafehouseScreen pasando el repository
       home: Scaffold(
         body: Center(
           child: Text(

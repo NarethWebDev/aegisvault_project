@@ -1,5 +1,3 @@
-/// Modelo que representa un refugio (safehouse) de la red ShadowNet.
-/// Se construye a partir del JSON que devuelve Supabase.
 class Safehouse {
   final String id;
   final String codename;
@@ -21,7 +19,7 @@ class Safehouse {
     required this.createdAt,
   });
 
-  /// Construye un [Safehouse] desde el mapa JSON de Supabase.
+  
   factory Safehouse.fromJson(Map<String, dynamic> json) {
     return Safehouse(
       id: json['id'] as String,
@@ -35,7 +33,6 @@ class Safehouse {
     );
   }
 
-  /// Convierte el modelo a JSON para guardarlo en caché local encriptado.
   Map<String, dynamic> toJson() {
     return {
       'id': id,
