@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../models/safehouse_model.dart';
+import '../models/safehouse.dart';
 
 /// Repositorio encargado de obtener los refugios desde Supabase
 /// y guardarlos encriptados en el almacenamiento local como caché de emergencia.
