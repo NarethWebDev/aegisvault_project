@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'features/safehouses/data/repositories/safehouse_repository.dart';
+import 'features/safehouses/presentation/screens/safehouse_screen.dart';
 
 const String _supabaseUrl = 'https://gbgvtwkhmagupynpvdkb.supabase.co';
 const String _supabaseAnonKey =
@@ -40,18 +41,7 @@ class AegisVaultApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: Scaffold(
-        body: Center(
-          child: Text(
-            'AEGIS VAULT',
-            style: TextStyle(
-              color: const Color(0xFF00FF41),
-              fontSize: 24,
-              letterSpacing: 4,
-            ),
-          ),
-        ),
-      ),
+      home: SafehouseScreen(repository: repository),
     );
   }
 }
