@@ -193,25 +193,7 @@ class _SafehouseScreenState extends State<SafehouseScreen> {
       );
     }
 
-      return RefreshIndicator(
-      onRefresh: _loadData,
-      color: const Color(0xFF00FF41),
-      child: GridView.builder(
-        padding: const EdgeInsets.all(16),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 12,
-          childAspectRatio: 0.85,
-        ),
-        itemCount: _safehouses.length,
-        itemBuilder: (context, index) {
-          return _SafehouseCard(safehouse: _safehouses[index]);
-        },
-      ),
-    );
-  }
-}
+
 
 // ── Tarjeta individual ───────────────────────────────────────────────────────
 
