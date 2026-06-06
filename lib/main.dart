@@ -35,11 +35,11 @@ class AegisVaultApp extends StatelessWidget {
       title: 'Aegis Vault',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        useMaterial3: true,                    // ← activa Material 3
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF00FF41),
+          seedColor: const Color(0xFF00FF41),  // ← color base del esquema
           brightness: Brightness.dark,
         ),
-        useMaterial3: true,
       ),
       home: SafehouseScreen(repository: repository),
     );

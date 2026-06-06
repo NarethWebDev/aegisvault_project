@@ -19,7 +19,6 @@ class Safehouse {
     required this.createdAt,
   });
 
-  
   factory Safehouse.fromJson(Map<String, dynamic> json) {
     return Safehouse(
       id: json['id'] as String,

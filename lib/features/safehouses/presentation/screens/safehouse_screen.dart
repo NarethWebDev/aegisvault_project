@@ -6,10 +6,6 @@ import '../../data/repositories/safehouse_repository.dart';
 import '../../services/proximity_service.dart';
 import '../widgets/network_banner.dart';
 
-/// Pantalla principal de Aegis Vault.
-///
-/// Responsabilidades de Santiago:
-///  1. BYPASS DE RED: detecta si hay internet. Si no hay, carga desde caché
 ///     encriptado y muestra [OfflineBanner].
 ///  2. VIBRACIÓN POR PROXIMIDAD: inicia [ProximityService] para activar
 ///     ráfagas Geiger cuando el agente está a <100m del Neon-Vault.
@@ -18,7 +14,7 @@ class SafehouseScreen extends StatefulWidget {
 
   const SafehouseScreen({super.key, required this.repository});
 
-  @override
+  @override       
   State<SafehouseScreen> createState() => _SafehouseScreenState();
 }
 
@@ -197,7 +193,7 @@ class _SafehouseScreenState extends State<SafehouseScreen> {
       );
     }
 
-    return RefreshIndicator(
+      return RefreshIndicator(
       onRefresh: _loadData,
       color: const Color(0xFF00FF41),
       child: GridView.builder(
@@ -228,7 +224,6 @@ class _SafehouseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    // Si está comprometido → color de alerta
     final Color cardColor = safehouse.isCompromised
         ? colorScheme.errorContainer
         : colorScheme.surfaceVariant;
@@ -237,10 +232,11 @@ class _SafehouseCard extends StatelessWidget {
         ? colorScheme.onErrorContainer
         : colorScheme.onSurfaceVariant;
 
-    // Semantics: accesibilidad de voz
     return Semantics(
       label:
-          'Refugio ${safehouse.codename}, ubicado en el sector ${safehouse.sector}, capacidad para ${safehouse.capacity} agentes',
+          'Refugio ${safehouse.codename}, '
+          'ubicado en el sector ${safehouse.sector}, '
+          'capacidad para ${safehouse.capacity} agentes',
       child: Card(
         color: cardColor,
         elevation: 4,
@@ -252,14 +248,11 @@ class _SafehouseCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Icono + estado
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Icon(
-                    safehouse.isCompromised
-                        ? Icons.dangerous
-                        : Icons.shield,
+                    safehouse.isCompromised ? Icons.dangerous : Icons.shield,
                     color: safehouse.isCompromised
                         ? colorScheme.error
                         : const Color(0xFF00FF41),
@@ -286,8 +279,6 @@ class _SafehouseCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-
-              // Nombre clave
               Text(
                 safehouse.codename,
                 style: TextStyle(
@@ -298,13 +289,10 @@ class _SafehouseCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-
-              // Sector
               Row(
                 children: [
                   Icon(Icons.location_on,
-                      size: 12,
-                      color: textColor.withOpacity(0.7)),
+                      size: 12, color: textColor.withOpacity(0.7)),
                   const SizedBox(width: 4),
                   Expanded(
                     child: Text(
@@ -319,13 +307,10 @@ class _SafehouseCard extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-
-              // Capacidad
               Row(
                 children: [
                   Icon(Icons.group,
-                      size: 13,
-                      color: textColor.withOpacity(0.7)),
+                      size: 13, color: textColor.withOpacity(0.7)),
                   const SizedBox(width: 4),
                   Text(
                     '${safehouse.capacity} agentes',
